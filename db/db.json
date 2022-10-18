@@ -1,6 +1,17 @@
-{
-    "title":"test",
-    "text": " ahah",
-    "id":1
-}
-
+[
+    {
+        "title": "test",
+        "text": " ahah",
+        "id": 1
+    },
+    {
+        "id": "e0c289e4-e195-4ed3-9019-1be2830a5232",
+        "title": "any value here",
+        "text": "any value here"
+    },
+    {
+        "id": "6a69ab34-590f-49aa-944a-9abc472b6942",
+        "title": "any value here",
+        "text": "any value here"
+    }
+]

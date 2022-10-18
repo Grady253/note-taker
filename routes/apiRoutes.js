@@ -9,6 +9,7 @@ const {
     readAndAppend,
     writeToFile,
 } = require('../helpers/fsUtils');
+const req = require('express/lib/request');
 
 
 app.get('/notes', (req, res) =>{
@@ -16,9 +17,6 @@ app.get('/notes', (req, res) =>{
 });
 
 app.post('/notes', (req, res ) =>{
-    let db = fs.readFileSync('./db/db.json');
-    res.json(db);
-    
     if (req.body){
         const notes ={
             id: uuidv4(),
@@ -33,6 +31,16 @@ app.post('/notes', (req, res ) =>{
 });
 
 
-app.delete('/notes')
+app.delete('/notes/:notesId', (req, res) => {
+   const notesId = req.params.notesId;
+    readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) =>{
+        const result =json.filter((notes) => notes.id !== notesId);
+        writeToFile('./db/db.json', result);
+        res.json(`Note ${notesId} has been deleted`);
+    });
+
+});
 
 module.exports= (app);
