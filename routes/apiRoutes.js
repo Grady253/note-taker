@@ -12,7 +12,8 @@ module.exports= (app) =>{
     app.post('api/notes', (req, res ) =>{
      let db = fs.readFileSync('./db/db.json');
      res.json(db);
-      
+
+     let 
     })
 
 
