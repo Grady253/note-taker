@@ -9,7 +9,7 @@ const {
     readAndAppend,
     writeToFile,
 } = require('../helpers/fsUtils');
-const req = require('express/lib/request');
+
 
 
 app.get('/notes', (req, res) =>{
@@ -22,12 +22,14 @@ app.post('/notes', (req, res ) =>{
             id: uuidv4(),
             title: req.body.title,
             text: req.body.text
-        }
+        };
+        console.log(notes);
         readAndAppend(notes, './db/db.json');
         res.json('Note add successfully');
     }else{
         res.error('Error adding Note.')
     };
+    console.log("it worked");
 });
 
 
@@ -43,4 +45,4 @@ app.delete('/notes/:notesId', (req, res) => {
 
 });
 
-module.exports= (app);
+module.exports= app;
